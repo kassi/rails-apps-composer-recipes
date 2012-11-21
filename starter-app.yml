@@ -1,0 +1,48 @@
+recipes:
+- core
+- git
+- railsapps
+- setup
+- readme
+- gems
+- testing
+- email
+- models
+- controllers
+- views
+- routes
+- frontend
+- init
+- prelaunch
+- extras
+- bootvars
+- mysql
+
+prefs:
+  :dev_webserver: thin
+  :prod_webserver: same
+  :database: sqlite
+  :templates: erb
+  :unit_test: rspec
+  :integration: capybara
+  :fixtures: factory_girl
+  :frontend: bootstrap
+  :bootstrap: less
+  :form_builder: simple_form
+  :email: smtp
+  :authentication: devise
+  :devise_modules: confirmable
+  :authorization: cancan
+  :railsapps: none
+  :starter_app: admin_app
+  :quiet_assets: yes
+  :ban_spiders: yes
+  :rvmrc: yes
+  :github: false
+
+gems:
+- awesome_print
+
+args:
+  :skip_test_unit: yes
+  :skip_active_record: false
