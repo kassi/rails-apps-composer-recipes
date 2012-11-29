@@ -2,6 +2,8 @@ before_config do
   # Code here is run before any configuration prompts.
 end
 
+prefs[:mysql] = true unless prefs.has_key? :mysql
+
 # add gems here
 gsub_file 'Gemfile', /(gem 'sqlite3')/m do |match|
   "#{match}, :group => [:development, :test]"
