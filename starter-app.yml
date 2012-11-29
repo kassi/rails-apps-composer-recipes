@@ -39,6 +39,7 @@ prefs:
   :ban_spiders: yes
   :rvmrc: yes
   :github: false
+  :bitbucket_user: ksi
 
 gems:
 - awesome_print
