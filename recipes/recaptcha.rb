@@ -7,7 +7,7 @@ before_config do
 end
 
 after_bundler do
-  repo = 'https://raw.github.com/kassi/rails-apps-composer-recipes/master/templates/recaptcha'
+  repo = 'https://raw.github.com/kassi/rails-apps-composer-recipes/master/templates/recaptcha/'
 
   copy_from_repo 'config/initializers/recaptcha.rb', :repo => repo
 

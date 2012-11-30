@@ -14,7 +14,7 @@ end
 gem 'capistrano'
 
 after_bundler do
-  repo = 'https://raw.github.com/kassi/rails-apps-composer-recipes/master/templates/capistrano'
+  repo = 'https://raw.github.com/kassi/rails-apps-composer-recipes/master/templates/capistrano/'
   # Code here is run after Bundler installs all the gems for the project.
   # Use this section to run generators and rake tasks.
   # Download any files from a repository for models, controllers, views, and routes.
