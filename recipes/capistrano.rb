@@ -18,7 +18,12 @@ after_bundler do
   # Code here is run after Bundler installs all the gems for the project.
   # Use this section to run generators and rake tasks.
   # Download any files from a repository for models, controllers, views, and routes.
+  puts "== capify "+"="*70
+  puts
   run "capify ."
+  puts
+  puts "="*80
+
   gsub_file 'Capfile', /^\s*# load 'deploy\/assets'/m, "load 'deploy/assets'"
 
   remove_file 'config/deploy.rb'

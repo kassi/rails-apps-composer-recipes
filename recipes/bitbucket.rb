@@ -39,7 +39,11 @@ after_everything do
   # This block is run after the 'after_bundler' block.
   # Use this section to finalize the application.
   # Run database migrations or make a final git commit.
+  puts "== create repository on bitbucket "+"="*46
+  puts
   run "git #{prefs[:bitbucket_alias]}"
+  puts
+  puts "="*80
 end
 
 __END__
