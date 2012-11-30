@@ -16,7 +16,7 @@ after_bundler do
 
     inject_into_file 'config/routes.rb', ", controllers: { registrations: 'registrations' }", :after => 'devise_for :users'
 
-    inject_into_file 'app/views/devise/registrations/new.html.erb', :before => '' do <<-RUBY
+    inject_into_file 'app/views/devise/registrations/new.html.erb', :before => '  <%= f.button :submit' do <<-RUBY
   <%= f.label 'Security check', :required => true %>
   <%= recaptcha_tags :display => { :theme => 'blackglass' } %><br />
 RUBY
