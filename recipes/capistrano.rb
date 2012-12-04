@@ -51,7 +51,7 @@ after_bundler do
     # role :db,  "your slave db-server here"
 
     # if you want to clean up old releases on each deploy uncomment this:
-    # after "deploy:restart", "deploy:cleanup"
+    after "deploy:restart", "deploy:cleanup"
 
     # if you're still using the script/reaper helper you will need
     # these http://github.com/rails/irs_process_scripts
@@ -66,6 +66,21 @@ after_bundler do
       end
       task :restart, :roles => :app, :except => { :no_release => true } do
         run "\#{try_sudo} touch \#{File.join(current_path,'tmp','restart.txt')}"
+      end
+    end
+
+    # Skipping asset compilation when no changes occured
+    # from http://www.bencurtis.com/2011/12/skipping-asset-compilation-with-capistrano/
+    namespace :deploy do
+      namespace :assets do
+        task :precompile, :roles => :web, :except => { :no_release => true } do
+          from = source.next_revision(current_revision)
+          if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ lib/assets/ | wc -l").to_i > 0
+            run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+          else
+            logger.info "Skipping asset pre-compilation because there were no asset changes"
+          end
+        end
       end
     end
 DEPLOY
